@@ -1,0 +1,18 @@
+{
+    "languageserver": {
+        "lua": {
+            "sumneko-lua.enableNvimLuaDev": true
+        }
+    },
+    "eslint": {
+        "enable": true,
+        "autoFixOnSave": true,
+        "packageManager": "yarn"
+    },
+    "tsserver": {
+        "enable": true,
+        "log": true
+    },
+    "snippets.ultisnips.pythonPrompt": false,
+    "suggest.autoTrigger": "none"
+}
