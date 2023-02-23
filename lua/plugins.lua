@@ -124,8 +124,6 @@ return require('packer').startup(function(use)
 
     use 'kylechui/nvim-surround'
 
-    use 'ahmedkhalf/project.nvim'
-
     use 'napmn/react-extract.nvim'
 
     use 'windwp/nvim-ts-autotag'
