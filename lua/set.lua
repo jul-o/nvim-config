@@ -57,4 +57,6 @@ vim.opt.ttyfast = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 

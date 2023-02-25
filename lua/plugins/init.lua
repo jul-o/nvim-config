@@ -1,8 +1,4 @@
 return {
-
-    -- use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-    'ThePrimeagen/harpoon',
     'mbbill/undotree',
     'tpope/vim-fugitive',
 
@@ -32,24 +28,6 @@ return {
     },
 
     "williamboman/mason.nvim",
-
-    {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to the default settings,
-                -- refer to the configuration section below
-            }
-        end
-    },
-
-    {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    },
 
     "terrortylor/nvim-comment",
     'vim-airline/vim-airline',
