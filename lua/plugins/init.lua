@@ -32,12 +32,11 @@ return {
     "terrortylor/nvim-comment",
     {
         "gregorias/nvim-mapper",
-        config = function() require("nvim-mapper").setup{} end,
+        config = {},
         dependencies = {
-          'nvim-telescope/telescope.nvim', tag = '0.1.1',
-          -- or                            , branch = '0.1.x',
-          dependencies = { {'nvim-lua/plenary.nvim'} 
-        }
+          'nvim-telescope/telescope.nvim',
+          tag = '0.1.1',
+          dependencies = {'nvim-lua/plenary.nvim'}
       }
     },
 
@@ -50,8 +49,6 @@ return {
       },
       version = 'nightly' -- optional, updated every week. (see issue #1193)
     },
-
-    -- {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 
     {'neoclide/coc.nvim', branch = 'release'},
 

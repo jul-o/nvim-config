@@ -56,7 +56,8 @@ return {
         h = { '<cmd>BufferPrevious<cr>', 'Previous'},
         P = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
         N = { '<cmd>BufferMoveNext<cr>', 'Next'},
-        q = { '<cmd>BufferClose<cr>', 'Close'}
+        q = { '<cmd>BufferClose<cr>', 'Close'},
+        l = {vim.cmd.BufferLast, 'Last'}
       },
       w = {
         name = 'Window',
