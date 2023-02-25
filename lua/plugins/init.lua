@@ -30,7 +30,6 @@ return {
     "williamboman/mason.nvim",
 
     "terrortylor/nvim-comment",
-    'vim-airline/vim-airline',
     {
         "gregorias/nvim-mapper",
         config = function() require("nvim-mapper").setup{} end,
@@ -47,12 +46,12 @@ return {
     {
       'nvim-tree/nvim-tree.lua',
       dependencies = {
-        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        'kyazdani42/nvim-web-devicons'
       },
       version = 'nightly' -- optional, updated every week. (see issue #1193)
     },
 
-    {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
+    -- {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 
     {'neoclide/coc.nvim', branch = 'release'},
 
