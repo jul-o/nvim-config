@@ -32,71 +32,77 @@ local mappings = {
         c = { vim.cmd.Ag, 'Code search'},
         p = { function() require('telescope').extensions.projects.projects({}) end, 'Find project'}
     },
+    p = {
+      name = 'Projects',
+      p = { function() require('telescope').extensions.projects.projects({}) end, 'Find project'},
+      -- d = { project.delete_project, 'Delete' },
+    },
     t = {
-        name = 'Neotree',
-        t = { '<cmd>NvimTreeToggle<cr>',  'Toggle'},
-        c = { '<cmd>NvimTreeCollapse<cr>', 'Collapse' },
+      name = 'Neotree',
+      t = { '<cmd>NvimTreeToggle<cr>',  'Toggle'},
+      c = { '<cmd>NvimTreeCollapse<cr>', 'Collapse' },
     },
     b = {
-        name = 'Buffer',
-        n = { '<cmd>BufferNext<cr>', 'Next'},
-        l = { '<cmd>BufferNext<cr>', 'Next'},
-        h = { '<cmd>BufferPrevious<cr>', 'Previous'},
-        P = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
-        N = { '<cmd>BufferMoveNext<cr>', 'Next'},
-        q = { '<cmd>BufferClose<cr>', 'Close'}
+      name = 'Buffer',
+      n = { '<cmd>BufferNext<cr>', 'Next'},
+      l = { '<cmd>BufferNext<cr>', 'Next'},
+      h = { '<cmd>BufferPrevious<cr>', 'Previous'},
+      P = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
+      N = { '<cmd>BufferMoveNext<cr>', 'Next'},
+      q = { '<cmd>BufferClose<cr>', 'Close'}
     },
     w = {
-        name = 'Window',
-        v = {'<cmd>:wincmd v<cr>', 'Split vertically'},
-        s = {'<cmd>:wincmd s<cr>', 'Split horizontally'},
+      name = 'Window',
+      v = {'<cmd>:wincmd v<cr>', 'Split vertically'},
+      s = {'<cmd>:wincmd s<cr>', 'Split horizontally'},
 
-        h = {'<cmd>:wincmd h<cr>', 'Jump left'},
-        j = {'<cmd>:wincmd j<cr>', 'Jump bottom'},
-        k = {'<cmd>:wincmd k<cr>', 'Jump up'},
-        l = {'<cmd>:wincmd l<cr>', 'Jump right'},
+      h = {'<cmd>:wincmd h<cr>', 'Jump left'},
+      j = {'<cmd>:wincmd j<cr>', 'Jump bottom'},
+      k = {'<cmd>:wincmd k<cr>', 'Jump up'},
+      l = {'<cmd>:wincmd l<cr>', 'Jump right'},
 
-        H = {'<cmd>:wincmd H<cr>', 'Move left'},
-        J = {'<cmd>:wincmd J<cr>', 'Move bottom'},
-        K = {'<cmd>:wincmd K<cr>', 'Move up'},
-        L = {'<cmd>:wincmd L<cr>', 'Move right'},
+      H = {'<cmd>:wincmd H<cr>', 'Move left'},
+      J = {'<cmd>:wincmd J<cr>', 'Move bottom'},
+      K = {'<cmd>:wincmd K<cr>', 'Move up'},
+      L = {'<cmd>:wincmd L<cr>', 'Move right'},
 
-        q = {'<cmd>:wincmd q<cr>', 'Close'},
+      q = {'<cmd>:wincmd q<cr>', 'Close'},
     },
     l = {
-        name = 'Language',
-        r = { vim.lsp.buf.references, 'Find references' },
-        R = 'Rename',
-        f = { vim.lsp.buf.format, 'Format' },
-        h = 'Hover',
-        d = 'Jump to definition',
-        l = 'Code lens refresh',
-        e = 'Display errors',
-        ['?'] = 'Lsp infos'
+      name = 'Language',
+      r = { vim.lsp.buf.references, 'Find references' },
+      R = 'Rename',
+      f = { vim.lsp.buf.format, 'Format' },
+      h = 'Hover',
+      d = 'Jump to definition',
+      l = 'Code lens refresh',
+      e = 'Display errors',
+      ['?'] = 'Lsp infos',
+      a = 'Code actions',
     },
     r = {
-        name = 'Refactor',
-        e = {
-            name = 'Extract',
-            -- f = { function() vim.cmd.CocCommand('react-refactor.extractToFunction') end, 'Extract to function'}
-        }
+      name = 'Refactor',
     },
     c = {
-        name = 'COC',
-        c = { vim.cmd.CocCommand, 'Commands' }
+      name = 'COC',
+      c = { vim.cmd.CocCommand, 'Commands' }
 
     },
     j = {
-        name = 'Jump',
-        p = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%<' . line('.') . 'l\\S', 'eb')<CR>", 'Next line, same indentation'},
-        n = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%>' . line('.') . 'l\\S', 'e')<CR>", 'Next line, same indentation'},
-
-        -- vim.keymap.set('n', '<leader>jn', ":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%>' . line('.') . 'l\\S', 'e')<CR>")
-        -- vim.keymap.set('n', '<leader>jp', ":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%<' . line('.') . 'l\\S', 'be')<CR>")
-
+      name = 'Jump',
+      p = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%<' . line('.') . 'l\\S', 'eb')<CR>", 'Next line, same indentation'},
+      n = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%>' . line('.') . 'l\\S', 'e')<CR>", 'Next line, same indentation'},
+    },
+    g = {
+      name = 'Git',
+      d = { 
+        name = 'Diffview',
+        o = {vim.cmd.DiffviewOpen, 'Open diff view'},
+        c = {vim.cmd.DiffviewClose, 'Close diff view'},
+      }
     }
-}
+  }
 
-wk.register(mappings, { mode = 'n', prefix = '<leader>'})
-wk.register(mappings, { mode = 'v', prefix = '<leader>'})
--- Display action: :imap
+  wk.register(mappings, { mode = 'n', prefix = '<leader>'})
+  wk.register(mappings, { mode = 'v', prefix = '<leader>'})
+  -- Display action: :imap

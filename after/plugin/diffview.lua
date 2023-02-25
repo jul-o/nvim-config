@@ -1,1 +1,7 @@
-require('diffview').setup()
+require('diffview').setup({
+  keymaps = {
+    
+  }
+})
+
+

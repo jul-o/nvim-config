@@ -5,6 +5,7 @@
 --  - ultisnips
 --  - Fold blocks
 --  - investigate on code lens
+--  - underline errors/Users/julessang/.local/state/nvim/lsp.log
 --
 --
 -- TOTEST:
@@ -129,4 +130,16 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-ts-autotag'
 
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-end)
+
+    use 'ahmedkhalf/project.nvim'
+
+    use 'bybunni/llm.nvim'
+
+    
+    
+
+    use {
+      'kosayoda/nvim-lightbulb',
+      requires = 'antoinemadec/FixCursorHold.nvim',
+    }
+  end)

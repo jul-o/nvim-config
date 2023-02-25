@@ -50,10 +50,8 @@ vim.opt.cursorline = true
 vim.opt.updatetime = 50
 vim.opt.ttyfast = true
 
-vim.g.mapleader = " "
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.api.nvim_create_autocmd({ 'CursorHold' }, {callback = vim.lsp.buf.document_highlight})
-vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {callback = vim.lsp.buf.document_highlight})
-vim.api.nvim_create_autocmd({ 'CursorMoved' }, {callback = vim.lsp.buf.clear_references})
-vim.api.nvim_create_autocmd({ 'CursorMovedI' }, {callback = vim.lsp.buf.clear_references})
+vim.g.mapleader = " "
 

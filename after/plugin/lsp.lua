@@ -42,6 +42,15 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>lt', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<leader>ll', vim.lsp.codelens.refresh, opts)
     vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
-end)
+    vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, opts)
 
-lsp.setup()
+    -- if client.server_capabilities.document_highlight then
+      vim.api.nvim_create_autocmd({ 'CursorHold' }, {callback = vim.lsp.buf.document_highlight})
+      vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {callback = vim.lsp.buf.document_highlight})
+      vim.api.nvim_create_autocmd({ 'CursorMoved' }, {callback = vim.lsp.buf.clear_references})
+      vim.api.nvim_create_autocmd({ 'CursorMovedI' }, {callback = vim.lsp.buf.clear_references})
+    -- end
+
+  end)
+
+  lsp.setup()
