@@ -17,6 +17,10 @@
 --" set noswapfile            " disable creating swap file
 --" set backupdir=~/.cache/vim " Directory to store backup files.
 
+vim.opt.clipboard = 'unnamedplus'
+
+vim.o.background = 'dark'
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -53,5 +57,4 @@ vim.opt.ttyfast = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.g.mapleader = " "
 

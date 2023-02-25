@@ -14,29 +14,33 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+vim.opt.rtp:prepend(lazypath)
+return require('lazy').setup({
 
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    -- use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+    'ThePrimeagen/harpoon',
+    'mbbill/undotree',
+    'tpope/vim-fugitive',
 
-    use 'Mofiqul/vscode.nvim'
+    {'Mofiqul/vscode.nvim', config = function() require('vscode').setup({}) end },
 
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use 'ThePrimeagen/harpoon'
-    use 'mbbill/undotree'
-    use 'tpope/vim-fugitive'
-
-    use {
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
@@ -54,92 +58,97 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},             -- Required
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
-    }
+    },
 
-    use "williamboman/mason.nvim"
+    "williamboman/mason.nvim",
 
-    use {
+    {
         "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
             require("which-key").setup {
                 -- your configuration comes here
-                -- or leave it empty to use the default settings
+                -- or leave it empty to the default settings,
                 -- refer to the configuration section below
             }
         end
-    }
+    },
 
-    use {
+    {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
-    }
+    },
 
-    use "terrortylor/nvim-comment"
-    use 'vim-airline/vim-airline'
-    use {
+    "terrortylor/nvim-comment",
+    'vim-airline/vim-airline',
+    {
         "gregorias/nvim-mapper",
         config = function() require("nvim-mapper").setup{} end,
-        before = "telescope.nvim"
-    }
+        dependencies = {
+          'nvim-telescope/telescope.nvim', tag = '0.1.1',
+          -- or                            , branch = '0.1.x',
+          dependencies = { {'nvim-lua/plenary.nvim'} 
+        }
+      }
+    },
 
     -- Unless you are still migrating, remove the deprecated commands from v1.x
 
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+    {
+      'nvim-tree/nvim-tree.lua',
+      dependencies = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+      version = 'nightly' -- optional, updated every week. (see issue #1193)
+    },
 
-    use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+    {'romgrk/barbar.nvim', dependencies = 'nvim-web-devicons'},
 
-    use {'neoclide/coc.nvim', branch = 'release'}
+    {'neoclide/coc.nvim', branch = 'release'},
 
-    use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+    'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
 
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    'junegunn/fzf',
+    'junegunn/fzf.vim',
 
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-            require("todo-comments").setup {}
-        end
-    }
+    {
+      "folke/todo-comments.nvim",
+      dependencies = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {}
+      end
+    },
 
-    use { "LinArcX/telescope-command-palette.nvim" }
+    "LinArcX/telescope-command-palette.nvim",
 
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    {
+      "akinsho/toggleterm.nvim", 
+      version = '*',
+      config = function()
         require("toggleterm").setup()
-    end}
+      end},
 
-    use 'lewis6991/gitsigns.nvim'
+      'lewis6991/gitsigns.nvim',
 
-    use 'f-person/git-blame.nvim'
+      'f-person/git-blame.nvim',
 
-    use 'lukas-reineke/indent-blankline.nvim'
+      'lukas-reineke/indent-blankline.nvim',
 
-    use 'kylechui/nvim-surround'
+      'kylechui/nvim-surround',
 
-    use 'napmn/react-extract.nvim'
+      'napmn/react-extract.nvim',
 
-    use 'windwp/nvim-ts-autotag'
+      'windwp/nvim-ts-autotag',
 
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+      { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 
-    use 'ahmedkhalf/project.nvim'
+      'ahmedkhalf/project.nvim',
 
-    use 'bybunni/llm.nvim'
+      'bybunni/llm.nvim',
 
-    
-    
-
-    use {
-      'kosayoda/nvim-lightbulb',
-      requires = 'antoinemadec/FixCursorHold.nvim',
-    }
-  end)
+      {
+        'kosayoda/nvim-lightbulb',
+        dependencies = 'antoinemadec/FixCursorHold.nvim',
+      },
+    })
