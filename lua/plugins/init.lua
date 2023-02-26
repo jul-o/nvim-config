@@ -50,7 +50,7 @@ return {
       version = 'nightly' -- optional, updated every week. (see issue #1193)
     },
 
-    {'neoclide/coc.nvim', branch = 'release'},
+    -- {'neoclide/coc.nvim', branch = 'release'},
 
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
 
@@ -77,8 +77,6 @@ return {
       'lewis6991/gitsigns.nvim',
 
       'f-person/git-blame.nvim',
-
-      'lukas-reineke/indent-blankline.nvim',
 
       'kylechui/nvim-surround',
 
