@@ -2,10 +2,19 @@ return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   dependencies = {
-    'nvim-treesitter/playground'
+    'nvim-treesitter/playground',
+    'HiPhish/nvim-ts-rainbow2',
   },
   config = function ()
     require'nvim-treesitter.configs'.setup {
+      rainbow = {
+        enable = true,
+        disable = {},
+        query = 'rainbow-parens',
+        strategy = 'global',
+        -- Do not enable for files with more than n lines
+        max_file_lines = 3000
+      },
       -- A list of parser names, or "all" (the four listed parsers should always be installed)
       ensure_installed = { "lua", "typescript", "javascript", "vim", "help" },
 

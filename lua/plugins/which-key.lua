@@ -15,6 +15,10 @@ return {
     local builtin = require('telescope.builtin')
 
     local mappings = {
+      ['<leader>'] = {
+        function() vim.cmd [[Telescope commands]] end,
+        'Run...'
+      },
       h = {
         name = 'Harpoon',
         a = { mark.add_file, 'Add file' },
