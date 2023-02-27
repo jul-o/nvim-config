@@ -8,6 +8,7 @@ vim.g.mapleader = " "
 --  - investigate on code lens
 --  - underline errors
 --  - Better legendary search
+--  - Investigate on lazygit
 --
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`

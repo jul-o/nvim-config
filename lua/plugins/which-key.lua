@@ -61,7 +61,6 @@ return {
         P = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
         N = { '<cmd>BufferMoveNext<cr>', 'Next'},
         q = { '<cmd>BufferClose<cr>', 'Close'},
-        l = {vim.cmd.BufferLast, 'Last'}
       },
       w = {
         name = 'Window',
@@ -102,7 +101,7 @@ return {
       },
       j = {
         name = 'Jump',
-        p = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%<' . line('.') . 'l\\S', 'eb')<CR>", 'Next line, same indentation'},
+        p = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%<' . line('.') . 'l\\S', 'eb')<CR>", 'Previous line, same indentation'},
         n = {":call search('^'. matchstr(getline('.'), '\\(^\\s*\\)') .'\\%>' . line('.') . 'l\\S', 'e')<CR>", 'Next line, same indentation'},
       },
       g = {

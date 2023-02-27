@@ -69,6 +69,14 @@ lsp.on_attach(function(client, bufnr)
     clear_highlight(client); 
     trigger_highlight(client) ;
   end})
+
+  vim.api.nvim_create_autocmd({ 'BufWritePost' }, {callback = function() pcall(vim.cmd.EslintFixAll) end})
+
+  -- local async = event == "BufWritePost"
+  -- -- Run eslint fixes, do not display error messages if not supported
+  -- pcall(vim.cmd.EslintFixAll)
 end)
+
+
 
 lsp.setup()
