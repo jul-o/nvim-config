@@ -28,6 +28,17 @@ return {
           vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
         end, { buffer = bufnr, desc = "[lsp] format" })
       end
+
+      if client.supports_method('textDocument/documentHighlight') then
+        vim.api.nvim_create_autocmd({ 'CursorHold' }, {callback = vim.lsp.buf.document_highlight})
+        vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {callback = vim.lsp.buf.document_highlight})
+
+        vim.api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved'  }, {callback = function() 
+          vim.lsp.buf.clear_references()
+          vim.lsp.buf.document_highlight()
+        end})
+      end
+
     end,
   }
 }

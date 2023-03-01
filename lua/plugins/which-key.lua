@@ -111,7 +111,7 @@ return {
           o = {vim.cmd.DiffviewOpen, 'Open diff view'},
           c = {vim.cmd.DiffviewClose, 'Close diff view'},
         }
-      }
+      },
     }
 
     wk.register(mappings, { mode = 'n', prefix = '<leader>'})

@@ -23,21 +23,6 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-
-function trigger_highlight(client)
-    if client.server_capabilities.documentHighlightProvider then 
-      vim.lsp.buf.document_highlight()
-    end
-end
-
-function clear_highlight(client)
-    if client.server_capabilities.documentHighlightProvider then 
-      vim.lsp.buf.clear_references()
-    end 
-end
-
-
-
 lsp.on_attach(function(client, bufnr)
   local config = require('lspconfig')
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -59,22 +44,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, opts)
 
-  vim.api.nvim_create_autocmd({ 'CursorHold' }, {callback = function() trigger_highlight(client) end})
-  vim.api.nvim_create_autocmd({ 'CursorHoldI' }, {callback = function() trigger_highlight(client) end})
-  vim.api.nvim_create_autocmd({ 'CursorMoved' }, {callback = function() 
-    clear_highlight(client)
-    trigger_highlight(client)
-  end})
-  vim.api.nvim_create_autocmd({ 'CursorMovedI' }, {callback = function() 
-    clear_highlight(client); 
-    trigger_highlight(client) ;
-  end})
-
   vim.api.nvim_create_autocmd({ 'BufWritePost' }, {callback = function() pcall(vim.cmd.EslintFixAll) end})
-
-  -- local async = event == "BufWritePost"
-  -- -- Run eslint fixes, do not display error messages if not supported
-  -- pcall(vim.cmd.EslintFixAll)
 end)
 
 
