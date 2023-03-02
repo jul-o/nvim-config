@@ -9,6 +9,10 @@ vim.g.mapleader = " "
 --  - underline errors
 --  - Better legendary search
 --  - Investigate on lazygit
+--  - treesitter motions
+--  - better comments
+--  - JSDoc generation
+--  - reconfigure completion / codeium
 --
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
@@ -17,7 +21,7 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
-    "--filter=blob:none",
+   "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable", -- latest stable release
     lazypath,
