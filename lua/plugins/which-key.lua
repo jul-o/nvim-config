@@ -57,7 +57,9 @@ return {
         name = 'Buffer',
         n = { '<cmd>BufferNext<cr>', 'Next'},
         l = { '<cmd>BufferNext<cr>', 'Next'},
+        L = { '<cmd>BufferMoveNext<cr>', 'Next'},
         h = { '<cmd>BufferPrevious<cr>', 'Previous'},
+        H = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
         P = { '<cmd>BufferMovePrevious<cr>', 'Previous'},
         N = { '<cmd>BufferMoveNext<cr>', 'Next'},
         q = { '<cmd>BufferClose<cr>', 'Close'},
@@ -81,7 +83,7 @@ return {
       },
       l = {
         name = 'Language',
-        r = { vim.lsp.buf.references, 'Find references' },
+        r = { function() vim.cmd [[Telescope lsp_references]] end, 'Find references' },
         R = 'Rename',
         f = { vim.lsp.buf.format, 'Format' },
         h = 'Hover',

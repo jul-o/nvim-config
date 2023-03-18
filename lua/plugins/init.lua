@@ -2,8 +2,11 @@ return {
     'mbbill/undotree',
     'tpope/vim-fugitive',
 
-    {'Mofiqul/vscode.nvim', config = function() require('vscode').setup({}) end },
-
+    {'Mofiqul/vscode.nvim', config = function()
+      local vscode = require('vscode')
+        vscode.setup({})
+        vscode.load('dark')
+    end},
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -29,14 +32,18 @@ return {
 
     "williamboman/mason.nvim",
 
-    "terrortylor/nvim-comment",
     {
-        "gregorias/nvim-mapper",
-        config = {},
-        dependencies = {
-          'nvim-telescope/telescope.nvim',
-          tag = '0.1.1',
-          dependencies = {'nvim-lua/plenary.nvim'}
+      'numToStr/Comment.nvim',
+      config = {},
+    },
+
+    {
+      "gregorias/nvim-mapper",
+      config = {},
+      dependencies = {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.1',
+        dependencies = {'nvim-lua/plenary.nvim'}
       }
     },
 

@@ -23,12 +23,26 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
+local config = require('lspconfig')
+
+config.cssls.setup({
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+    scss = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    }
+  },
+})
+
 lsp.on_attach(function(client, bufnr)
-  local config = require('lspconfig')
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  config.tsserver.setup{}
 
   local opts = {buffer = bufnr, remap = false}
   vim.keymap.set('n', '<leader>ld', function() vim.lsp.buf.definition() end, opts)
@@ -43,10 +57,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<leader>ll', vim.lsp.codelens.refresh, opts)
   vim.keymap.set('n', '<space>le', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, opts)
-
-  vim.api.nvim_create_autocmd({ 'BufWritePost' }, {callback = function() pcall(vim.cmd.EslintFixAll) end})
 end)
-
-
 
 lsp.setup()

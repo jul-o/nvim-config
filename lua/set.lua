@@ -60,6 +60,8 @@ vim.opt.smartcase = true
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
+vim.opt.syntax = 'off'
+
 
 vim.opt.termguicolors = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]

@@ -4,7 +4,6 @@ vim.g.mapleader = " "
 -- TODO:
 --  - Better code completion
 --  - ultisnips
---  - Fold blocks
 --  - investigate on code lens
 --  - underline errors
 --  - Better legendary search
@@ -13,6 +12,9 @@ vim.g.mapleader = " "
 --  - better comments
 --  - JSDoc generation
 --  - reconfigure completion / codeium
+--  - investigate on ALE
+--  - improve Leap AST
+--  - https://github.com/rmagatti/goto-preview
 --
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
@@ -30,7 +32,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins')
-
 
 require('config')
 require('remap')
