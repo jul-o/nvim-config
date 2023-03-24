@@ -40,7 +40,8 @@ return {
         g = { builtin.git_files, 'Find git'},
         b = { builtin.buffers, 'Find buffers'},
         h = { builtin.help_tags, 'Help'},
-        c = { vim.cmd.Ag, 'Code search'},
+        c = { function() vim.cmd[[ Telescope grep_string ]] end, 'Code search'},
+        s = { vim.cmd.Ag, 'String search'},
         p = { function() require('telescope').extensions.projects.projects({}) end, 'Find project'}
       },
       p = {

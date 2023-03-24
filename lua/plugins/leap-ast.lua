@@ -1,5 +1,6 @@
 return {
-  'ggandor/leap-ast.nvim',
+  'jul-o/leap-ast.nvim',
+  -- dir = '~/projects/nvim-plugins/leap-ast.nvim',
   dependencies = {
     'ggandor/leap.nvim',
     'nvim-treesitter/nvim-treesitter'

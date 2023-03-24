@@ -14,6 +14,7 @@ vim.g.mapleader = " "
 --  - reconfigure completion / codeium
 --  - investigate on ALE
 --  - improve Leap AST
+--  - project find replace: https://github.com/nvim-pack/nvim-spectre
 --  - https://github.com/rmagatti/goto-preview
 --
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
