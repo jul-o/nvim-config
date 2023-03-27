@@ -12,6 +12,12 @@ return {
     'chriskempson/base16-vim'
   },
   {
+    'gosukiwi/vim-atom-dark'
+  },
+  {
+    'jacoborus/tender.vim'
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
     dependencies = {
